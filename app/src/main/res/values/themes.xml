@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.FoodHubAndroid" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashScreen" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/orange</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/orange</item>
+        <item name="postSplashScreenTheme">@style/Theme.FoodHubAndroid</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/rectangle_logo</item>
+    </style>
+</resources>
