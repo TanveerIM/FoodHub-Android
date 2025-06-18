@@ -36,6 +36,8 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devindepth.foodhub_android.R
+import com.devindepth.foodhub_android.ui.GroupSocialButtons
+import com.devindepth.foodhub_android.ui.SocialButton
 import com.devindepth.foodhub_android.ui.theme.Orange
 
 @Composable
@@ -108,50 +110,7 @@ fun AuthScreen() {
             .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
-            Text(text = stringResource(R.string.sign_in_title), color = Color.White)
-
-            Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                    shape = RoundedCornerShape(32.dp)
-                ) {
-                    Row(
-                        modifier = Modifier.height(38.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.ic_facebook),
-                            contentDescription = "",
-                            modifier = Modifier.size(24.dp)
-                        )
-                        Spacer(modifier = Modifier.padding(start = 8.dp))
-                        Text(
-                            text = stringResource(R.string.sign_with_facebook),
-                            color = Color.Black
-                        )
-                    }
-                }
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                    shape = RoundedCornerShape(32.dp)
-                ) {
-                    Row(
-                        modifier = Modifier.height(38.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.ic_google),
-                            contentDescription = "",
-                            modifier = Modifier.size(24.dp)
-                        )
-                        Spacer(modifier = Modifier.padding(start = 8.dp))
-                        Text(text = stringResource(R.string.sign_with_google), color = Color.Black)
-                    }
-
-                }
+            GroupSocialButtons(onFacebookClick = {}) {
             }
 
             Spacer(modifier = Modifier.height(16.dp))
