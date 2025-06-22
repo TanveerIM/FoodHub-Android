@@ -42,14 +42,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.devindepth.foodhub_android.R
 import com.devindepth.foodhub_android.ui.FoodHubTextField
 import com.devindepth.foodhub_android.ui.GroupSocialButtons
+import com.devindepth.foodhub_android.ui.navigation.AuthScreen
+import com.devindepth.foodhub_android.ui.navigation.Home
+import com.devindepth.foodhub_android.ui.navigation.Login
 import com.devindepth.foodhub_android.ui.theme.Orange
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
+fun SignUpScreen(navController: NavController, viewModel: SignUpViewModel = hiltViewModel()) {
     Box(modifier = Modifier.fillMaxWidth()) {
 
         var name = viewModel.name.collectAsStateWithLifecycle()
@@ -82,10 +87,14 @@ fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
             viewModel.navigationEvent.collectLatest { event ->
                 when (event) {
                     is SignUpViewModel.SignupNavigationEvent.NavigateToHome -> {
-                        Toast.makeText(context, "Sign up successful", Toast.LENGTH_SHORT).show()
+                        navController.navigate(Home) {
+                            popUpTo(AuthScreen) {
+                                inclusive = true
+                            }
+                        }
                     }
-                    else -> {
-
+                    is SignUpViewModel.SignupNavigationEvent.NavigateToLogin -> {
+                        navController.navigate(Login)
                     }
                 }
             }
@@ -170,7 +179,9 @@ fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
             Text(
                 text = stringResource(R.string.already_have_account),
                 color = Color.Black,
-                modifier = Modifier.padding(bottom = 16.dp).clickable { }.fillMaxWidth(),
+                modifier = Modifier.padding(bottom = 16.dp).clickable {
+                    viewModel.onLoginClick()
+                }.fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
             GroupSocialButtons(color = Color.Black, onFacebookClick = {}) { }
@@ -181,5 +192,5 @@ fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
 @Preview(showBackground = true)
 @Composable
 fun SignUpScreenPreview() {
-    SignUpScreen()
+    SignUpScreen(rememberNavController())
 }

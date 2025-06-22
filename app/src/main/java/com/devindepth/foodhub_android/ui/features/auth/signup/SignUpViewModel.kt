@@ -68,7 +68,11 @@ class SignUpViewModel @Inject constructor(
 
     }
 
-
+    fun onLoginClick() {
+        viewModelScope.launch {
+            _navigationEvent.emit(SignupNavigationEvent.NavigateToLogin)
+        }
+    }
 
 
     sealed class SignupNavigationEvent {
