@@ -25,6 +25,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.devindepth.foodhub_android.data.FoodApi
 import com.devindepth.foodhub_android.ui.features.auth.AuthScreen
+import com.devindepth.foodhub_android.ui.features.auth.login.SignInScreen
 import com.devindepth.foodhub_android.ui.features.auth.signup.SignUpScreen
 import com.devindepth.foodhub_android.ui.navigation.AuthScreen
 import com.devindepth.foodhub_android.ui.navigation.Home
@@ -96,7 +97,7 @@ class MainActivity : ComponentActivity() {
                             AuthScreen(navController)
                         }
                         composable<Login> {
-                            Box(modifier = Modifier.fillMaxSize().background(Color.Green)) {  }
+                            SignInScreen(navController)
                         }
                         composable<Home> {
                             Box(modifier = Modifier.fillMaxSize().background(Color.Red)) {  }
