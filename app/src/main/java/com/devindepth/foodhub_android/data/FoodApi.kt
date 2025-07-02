@@ -1,6 +1,7 @@
 package com.devindepth.foodhub_android.data
 
 import com.devindepth.foodhub_android.data.models.AuthResponse
+import com.devindepth.foodhub_android.data.models.OAuthRequest
 import com.devindepth.foodhub_android.data.models.SignInRequest
 import com.devindepth.foodhub_android.data.models.SignUpRequest
 import retrofit2.http.Body
@@ -17,4 +18,7 @@ interface FoodApi {
 
     @POST("/auth/login")
     suspend fun signIn(@Body request: SignInRequest): AuthResponse
+
+    @POST("/auth/oauth")
+    suspend fun oAuth(@Body request: OAuthRequest): AuthResponse
 }
