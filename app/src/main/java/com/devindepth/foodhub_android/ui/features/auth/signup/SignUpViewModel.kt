@@ -5,13 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.devindepth.foodhub_android.data.FoodApi
 import com.devindepth.foodhub_android.data.models.SignUpRequest
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jakarta.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
