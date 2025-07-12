@@ -76,4 +76,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
 
+
+    implementation ("com.facebook.android:facebook-login:17.0.0")
+
+
 }
